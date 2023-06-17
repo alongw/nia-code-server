@@ -19,7 +19,8 @@ router.post('/encode', (req: encodeType, res) => {
     status: 200,
     msg: '加密成功！',
     text: finishcode.default,
-    safe: finishcode.safe
+    safe: finishcode.safe,
+    lite: finishcode.lite
   })
 })
 

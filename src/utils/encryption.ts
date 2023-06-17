@@ -12,7 +12,8 @@ export const encode = (text: string) => {
   const safe = toBase64(encryss)
   return {
     default: `${config.before_encode}-${encryss}`,
-    safe: `${config.before_encode}-${safe}`
+    safe: `${config.before_encode}-${safe}`,
+    lite: `${config.before_encode}-${encrys}`
   }
 }
 
@@ -26,7 +27,8 @@ export const decode = (text: string): -1 | string => {
     return -1
   }
   // 处理base64
-  if (toStr(text) !== -1) {
+  const base64Regex = /^[A-Za-z0-9+/=]+$/
+  if (base64Regex.test(text)) {
     text = toStr(text) as string
   }
   try {
