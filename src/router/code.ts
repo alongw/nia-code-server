@@ -9,7 +9,7 @@ router.post('/encode', (req: encodeType, res) => {
   // 必须有参数
   if (!req || !req.body || !req.body.text) {
     return res.send({
-      status: 401,
+      status: 400,
       msg: '请提供参数'
     })
   }
@@ -28,7 +28,7 @@ router.post('/decode', (req: decodeType, res) => {
   // 必须有参数
   if (!req || !req.body || !req.body.text) {
     return res.send({
-      status: 401,
+      status: 400,
       msg: '请提供参数'
     })
   }
@@ -36,7 +36,7 @@ router.post('/decode', (req: decodeType, res) => {
   const finishcode = decode(req.body.text)
   if (finishcode === -1) {
     return res.send({
-      status: 403,
+      status: 405,
       msg: `解密失败，这不是有效的${config.before_encode}！`
     })
   }
